@@ -19,14 +19,12 @@ class App extends React.Component{
 
 fetchGif = (e) => {
   e.preventDefault();
-   fetch(`http://api.giphy.com/v1/gifs/search?q=${this.state.term}&api_key=rJ5rexOBSq95wSsDladXNLQxhCEtUI5l&limit=5`)
+   fetch(`http://api.giphy.com/v1/gifs/search?q=${this.state.term}&api_key=rJ5rexOBSq95wSsDladXNLQxhCEtUI5l&limit=10`)
      .then(resp => resp.json())
      .then(data => this.setState({ gifs: data.data }));
-
   }
 
   render(){
-
     return(
       <div>
         <GifSearch

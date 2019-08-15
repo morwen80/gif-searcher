@@ -3,10 +3,10 @@ import React from 'react';
 const GifBox = ( {gifs} ) => {
 
   return(
-    <div className="gifbox">
+    <div className="gifBox">
      {gifs.map(gif =>
        <li key={gif.id}>
-       <img alt="img" src={gif.images.fixed_height_still.url} />
+       <img alt="img" src={gif.images.fixed_height.url} />
        </li>
      )}
     </div>

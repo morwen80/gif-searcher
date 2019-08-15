@@ -7,19 +7,32 @@ h1, p {
   margin: 0;
 }
 
+li {
+  list-style-type: none;
+}
 nav {
-  background-color:#000;
+  background-color: rgba(255, 255, 255, 0.5);
   color: #fff;
-  padding: .5rem 1rem;
+  padding: .9rem 1rem;
+}
+nav input, nav button {
+  padding: .5rem;
+  font-size: 1rem;
+  border-radius: 7px;
+}
+nav button {
+  background-color: green;
+  color: white;
+  margin-left: .6rem;
 }
 
-.gifbox {
+/* GIFBOX */
+.gifBox {
   margin: 1rem;
   padding: .7rem;
   border: 2px dashed #000;
   color: #000;
-}
-
-button {
-  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
