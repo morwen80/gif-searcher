@@ -1,26 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import GifSearch from './components/GifSearch';
+import GifBox from './components/GifBox';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  constructor(){
+    super()
+
+    this.state = {
+      term: "",
+      gifs: []
+    }
+  }
+
+  handleChange = (e) => {
+    e.preventDefault();
+    this.setState({ term: e.target.value})
+  }
+
+fetchGif = (e) => {
+  e.preventDefault();
+   fetch(`http://api.giphy.com/v1/gifs/search?q=${this.state.term}&api_key=rJ5rexOBSq95wSsDladXNLQxhCEtUI5l&limit=5`)
+     .then(resp => resp.json())
+     .then(data => this.setState({ gifs: data.data }));
+
+  }
+
+  render(){
+
+    return(
+      <div>
+        <GifSearch
+          fetchGif={this.fetchGif}
+          handleChange={this.handleChange}
+        />
+        <GifBox
+          gifs={this.state.gifs}
+        />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
